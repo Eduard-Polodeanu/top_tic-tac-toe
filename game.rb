@@ -19,16 +19,26 @@ class Game
           @game_state = 'win'
           break
         end
+        if @board.check_game_state[0] == 'tie'
+          @game_state = 'tie'
+          break
+        end
         @board.change_value(player)
         @board.draw_board
       end
     end
-    @players.each do |player|
-      puts "!!!#{player}WON THE GAME!!!" if player.board_symbol == @board.check_game_state[1]
-    end
-    return unless @game_state == 'win'
-
+    game_outcome
     play_again
+  end
+
+  def game_outcome
+    if @game_state == 'win'
+      @players.each do |player|
+        puts "!!! #{player}WON THE GAME !!!" if player.board_symbol == @board.check_game_state[1]
+      end
+    elsif @game_state == 'tie'
+      puts "!!! IT'S A TIE !!!"
+    end
   end
 
   def play_again

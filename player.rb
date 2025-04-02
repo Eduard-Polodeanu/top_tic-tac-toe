@@ -7,7 +7,7 @@ class Player
     @@number_of_players += 1
     @player_number = @@number_of_players
     puts "Player #{@player_number}: Input the symbol you want to play with: "
-    @board_symbol = get_input
+    @board_symbol = obtain_player_symbol
     @win_flag = false
   end
 
@@ -17,7 +17,7 @@ class Player
 
   private
 
-  def get_input
+  def obtain_player_symbol
     loop do
       input = gets.chomp
       if input_valid?(input) == false
