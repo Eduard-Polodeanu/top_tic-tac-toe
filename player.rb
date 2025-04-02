@@ -8,7 +8,6 @@ class Player
     @player_number = @@number_of_players
     puts "Player #{@player_number}: Input the symbol you want to play with: "
     @board_symbol = obtain_player_symbol
-    @win_flag = false
   end
 
   def to_s

@@ -1,6 +1,4 @@
 class Board
-  attr_accessor :board_values
-
   def initialize
     @board_values = ('1'..'9').to_a
   end
@@ -32,10 +30,6 @@ class Board
     end
   end
 
-  def position_valid?(position)
-    @board_values.intersection(('1'..'9').to_a).include?(position)
-  end
-
   def check_game_state
     @board_values.each_with_index do |value, index|
       if [1, 4, 7].include?(index) && value == @board_values[index - 1] && value == @board_values[index + 1] # horizontal win-con
@@ -60,7 +54,13 @@ class Board
     ['playing', nil]
   end
 
+  private
+
   def game_tie?
     @board_values.intersection(('1'..'9').to_a).empty?
+  end
+
+  def position_valid?(position)
+    @board_values.intersection(('1'..'9').to_a).include?(position)
   end
 end
