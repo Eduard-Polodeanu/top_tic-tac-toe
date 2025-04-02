@@ -20,13 +20,13 @@ class Game
           break
         end
         puts "#{player}choose board position: "
-        position = gets
+        position = gets.chomp
         @board.change_value(position, player.board_symbol)
         @board.draw_board
       end
     end
     @players.each do |player|
-      puts "!!!#{player} WON THE GAME!!!" if player.board_symbol.strip == @board.check_game_state[1].strip
+      puts "!!!#{player} WON THE GAME!!!" if player.board_symbol == @board.check_game_state[1]
     end
   end
 end

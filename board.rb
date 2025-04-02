@@ -15,7 +15,7 @@ class Board
   end
 
   def change_value(position, value)
-    @board_values[Integer(position) - 1] = value.strip # TODO: check for invalid position, dont allow to change same pos twice
+    @board_values[Integer(position) - 1] = value # TODO: check for invalid position, dont allow to change same pos twice
   end
 
   def check_game_state
