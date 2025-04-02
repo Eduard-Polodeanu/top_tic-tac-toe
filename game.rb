@@ -13,20 +13,18 @@ class Game
   private
 
   def play_round
-    while @game_state == 'playing' # TODO: play again
+    while @game_state == 'playing'
       @players.each do |player|
         if @board.check_game_state[0] == 'win'
           @game_state = 'win'
           break
         end
-        puts "#{player}choose board position: "
-        position = gets.chomp
-        @board.change_value(position, player.board_symbol)
+        @board.change_value(player)
         @board.draw_board
       end
     end
     @players.each do |player|
-      puts "!!!#{player} WON THE GAME!!!" if player.board_symbol == @board.check_game_state[1]
+      puts "!!!#{player}WON THE GAME!!!" if player.board_symbol == @board.check_game_state[1]
     end
     return unless @game_state == 'win'
 

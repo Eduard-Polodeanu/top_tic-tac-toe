@@ -20,16 +20,15 @@ class Player
   def get_input
     loop do
       input = gets.chomp
-      if validate_input(input) == false
+      if input_valid?(input) == false
         @@dissallowed_board_symbols.push(input)
         return input
       end
-
       puts 'The chosen symbol is not allowed. Input another one: '
     end
   end
 
-  def validate_input(string)
+  def input_valid?(string)
     @@dissallowed_board_symbols.include?(string)
   end
 end

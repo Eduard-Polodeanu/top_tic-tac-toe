@@ -2,7 +2,7 @@ class Board
   attr_accessor :board_values
 
   def initialize
-    @board_values = Array(1..9)
+    @board_values = ('1'..'9').to_a
   end
 
   def draw_board
@@ -15,12 +15,25 @@ class Board
   end
 
   def reset_board
-    @board_values = Array(1..9)
+    @board_values = ('1'..'9').to_a
     draw_board
   end
 
-  def change_value(position, value)
-    @board_values[Integer(position) - 1] = value # TODO: check for invalid position, dont allow to change same pos twice
+  def change_value(player)
+    loop do
+      puts "#{player}choose board position: "
+      position = gets.chomp
+      if position_valid?(position)
+        @board_values[Integer(position) - 1] = player.board_symbol
+        break
+      else
+        puts 'Invalid position.'
+      end
+    end
+  end
+
+  def position_valid?(position)
+    @board_values.intersection(('1'..'9').to_a).include?(position)
   end
 
   def check_game_state
