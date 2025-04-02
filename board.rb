@@ -14,6 +14,11 @@ class Board
     puts '‾‾‾‾‾‾‾‾‾‾‾‾‾'
   end
 
+  def reset_board
+    @board_values = Array(1..9)
+    draw_board
+  end
+
   def change_value(position, value)
     @board_values[Integer(position) - 1] = value # TODO: check for invalid position, dont allow to change same pos twice
   end
